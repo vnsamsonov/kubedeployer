@@ -72,19 +72,23 @@ jobs:
         with:
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Other</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
               "categories": [
                 {
                   "title": "## Features",
-                  "labels": ["feat", "feature"]
+                  "labels": ["feature"]
                 },
                 {
                   "title": "## Fixes",
-                  "labels": ["fix", "bug"]
+                  "labels": ["fix"]
+                },
+                {
+                  "title": "## Refactoring",
+                  "labels": ["refactor"]
                 },
                 {
                   "title": "## Tests",
-                  "labels": ["test", "tests"]
+                  "labels": ["test"]
                 }
               ]
             }
