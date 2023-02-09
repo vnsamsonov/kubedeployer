@@ -71,17 +71,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check changelog
-        with:
-          changelog: ${{ steps.build_changelog.outputs.changelog }}
+        env:
+          CHANGELOG: ${{ steps.build_changelog.outputs.changelog }}
         run: |
-          env | grep INPUT
-          echo $INPUT_CHANGELOG
+          env
+          echo $CHANGELOG
 
-#      - name: Create release
-#        uses: mikepenz/action-gh-release@v0.2.0-a03
-#        with:
-#          body: ${{steps.build_changelog.outputs.changelog}}
-#
       - name: Create release
         uses: actions/create-release@v1.1.4
         env:
