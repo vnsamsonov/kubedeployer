@@ -83,7 +83,7 @@ jobs:
                   "labels": ["fix", "bug"]
                 },
                 {
-                  "title": "## Tests"
+                  "title": "## Tests",
                   "labels": ["test", "tests"]
                 }
               ]
