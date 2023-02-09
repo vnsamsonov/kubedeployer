@@ -69,13 +69,25 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Check changelog
-        env:
-          CHANGELOG: ${{ steps.build_changelog.outputs.changelog }}
-        run: |
-          env
-          echo $CHANGELOG
+        with:
+          configurationJson: |
+            {
+              "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                  "title": "Features",
+                  "labels": ["feat", "feature"]
+                },
+                {
+                  "title": "Fixes",
+                  "labels": ["fix", "bug"]
+                },
+                {
+                  "title": "Tests"
+                  "labels": ["test", "tests"]
+                }
+              ]
+            }
 
       - name: Create release
         uses: actions/create-release@v1.1.4
