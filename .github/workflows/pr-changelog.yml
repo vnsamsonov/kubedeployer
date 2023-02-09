@@ -1,0 +1,17 @@
+name: Pull Request Changelog Generator
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+    types: [opened, reopened, synchronize]
+
+jobs:
+  changelog:
+    name: Generate changelog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: etcdigital/pull-request-changelog@2.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
