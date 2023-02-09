@@ -71,15 +71,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create release
-        uses: actions/create-release@v1.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: mikepenz/action-gh-release@v0.2.0-a03
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-          body: ${{ steps.build_changelog.outputs.changelog }}
+          body: ${{steps.build_changelog.outputs.changelog}}
+
+#      - name: Create release
+#        uses: actions/create-release@v1.1.4
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          draft: false
+#          prerelease: false
+#          body: ${{ steps.build_changelog.outputs.changelog }}
 
 #  push-to-registry:
 #    name: Push Docker image to Docker Hub
